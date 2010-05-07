@@ -1,0 +1,12 @@
+# main
+bin/
+obj/
+TestResults/
+*.vspscc
+*.user
+*.snk
+*.suo
+*.vssscc
+*.gpState
+Debug/
+Release/
