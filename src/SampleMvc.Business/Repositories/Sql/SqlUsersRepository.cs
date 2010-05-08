@@ -23,7 +23,7 @@
 
         public int Save(User user)
         {
-            return ((User)HibernateTemplate.Save(user)).Id;
+            return (int)HibernateTemplate.Save(user);
         }
 
         public void Update(User user)

@@ -23,7 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{E1CF06C3-344
 		lib\Spring.Core.dll = lib\Spring.Core.dll
 		lib\Spring.Data.dll = lib\Spring.Data.dll
 		lib\Spring.Data.NHibernate21.dll = lib\Spring.Data.NHibernate21.dll
-		lib\System.Data.SQLite.dll = lib\System.Data.SQLite.dll
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83A141D4-6141-42A7-8092-43B68D88C483}"

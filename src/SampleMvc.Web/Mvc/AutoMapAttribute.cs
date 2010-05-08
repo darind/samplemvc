@@ -25,7 +25,7 @@
                 return;
             }
             var model = filterContext.Controller.ViewData.Model;
-            if (model != null)
+            if (model != null && SourceType.IsAssignableFrom(model.GetType()))
             {
                 var viewModel = controller.ModelMapper.Map(model, SourceType, DestType);
                 filterContext.Controller.ViewData.Model = viewModel;

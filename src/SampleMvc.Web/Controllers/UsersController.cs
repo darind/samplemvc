@@ -6,6 +6,7 @@
     using SampleMvc.Web.Mappers;
     using SampleMvc.Web.Models;
     using SampleMvc.Web.Mvc;
+    using System.Collections.Generic;
 
     [HandleError]
     public class UsersController : BaseController<IUsersRepository>
@@ -14,7 +15,7 @@
             : base(repository, userMapper)
         { }
 
-        [AutoMap(typeof(User[]), typeof(UserViewModel[]))]
+        [AutoMap(typeof(IEnumerable<User>), typeof(IEnumerable<UserViewModel>))]
         public ActionResult Index()
         {
             // return all users

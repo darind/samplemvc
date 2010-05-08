@@ -5,7 +5,8 @@
 	    id="users"
 	    type="SampleMvc.Web.Controllers.UsersController, SampleMvc.Web"
 	    singleton="false">
-    <constructor-arg name="repository" ref="stubUsersRepository" />
+    <!--<constructor-arg name="repository" ref="stubUsersRepository" />-->
+    <constructor-arg name="repository" ref="sqlUsersRepository" />
     <constructor-arg name="userMapper" ref="userMapper" />
   </object>
   
