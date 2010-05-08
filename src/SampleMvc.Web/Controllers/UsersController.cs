@@ -8,24 +8,17 @@
     using SampleMvc.Web.Mvc;
 
     [HandleError]
-    public class UsersController : Controller
+    public class UsersController : BaseController<IUsersRepository>
     {
-        private readonly IUsersRepository _repository;
-        private readonly IMapper _userMapper;
-
-        public UsersController(
-            IUsersRepository repository,
-            IMapper userMapper)
-        {
-            _repository = repository;
-            _userMapper = userMapper;
-        }
+        public UsersController(IUsersRepository repository, IMapper userMapper) 
+            : base(repository, userMapper)
+        { }
 
         [AutoMap(typeof(User[]), typeof(UserViewModel[]))]
         public ActionResult Index()
         {
             // return all users
-            var users = _repository.GetUsers();
+            var users = Repository.GetUsers();
             return View(users);
 
         }
@@ -45,8 +38,8 @@
             {
                 return View("New", userView);
             }
-            var user = (User)_userMapper.Map(userView, typeof(UserViewModel), typeof(User));
-            _repository.Save(user);
+            var user = (User)ModelMapper.Map(userView, typeof(UserViewModel), typeof(User));
+            Repository.Save(user);
             return RedirectToAction("Index", "Users");
         }
 
@@ -54,7 +47,7 @@
         public ActionResult Show(int id)
         {
             // find and return a specific user
-            var user = _repository.Get(id);
+            var user = Repository.Get(id);
             return View(user);
         }
 
@@ -62,7 +55,7 @@
         public ActionResult Edit(int id)
         {
             // return an HTML form for editing a specific user
-            var user = _repository.Get(id);
+            var user = Repository.Get(id);
             return View(user);
         }
 
@@ -74,8 +67,8 @@
             {
                 return View("Edit", userView);
             }
-            var user = (User)_userMapper.Map(userView, typeof(UserViewModel), typeof(User));
-            _repository.Update(user);
+            var user = (User)ModelMapper.Map(userView, typeof(UserViewModel), typeof(User));
+            Repository.Update(user);
             return RedirectToAction("Index", "Users");
         }
 
@@ -83,7 +76,7 @@
         public ActionResult Destroy(int id)
         {
             // delete a specific user
-            _repository.Delete(id);
+            Repository.Delete(id);
             return RedirectToAction("Index", "Users");
         }
 

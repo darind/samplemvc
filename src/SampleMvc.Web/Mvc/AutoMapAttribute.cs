@@ -3,6 +3,7 @@
     using System;
     using System.Web.Mvc;
     using AutoMapper;
+    using SampleMvc.Web.Controllers;
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AutoMapAttribute : ActionFilterAttribute
@@ -19,10 +20,15 @@
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             base.OnActionExecuted(filterContext);
+            var controller = filterContext.Controller as IModelMapperController;
+            if (controller == null)
+            {
+                return;
+            }
             var model = filterContext.Controller.ViewData.Model;
             if (model != null && model.GetType() == SourceType)
             {
-                var viewModel = Mapper.Map(model, SourceType, DestType);
+                var viewModel = controller.ModelMapper.Map(model, SourceType, DestType);
                 filterContext.Controller.ViewData.Model = viewModel;
             }
         }
