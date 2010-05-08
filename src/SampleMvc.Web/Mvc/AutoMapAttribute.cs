@@ -2,7 +2,6 @@
 {
     using System;
     using System.Web.Mvc;
-    using AutoMapper;
     using SampleMvc.Web.Controllers;
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
