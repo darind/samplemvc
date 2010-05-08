@@ -1,0 +1,7 @@
+This is a sample ASP.NET MVC application based on the following frameworks:
+
+ * NHibernate
+ * FluentNHibernate
+ * Spring.NET
+ * AutoMapper
+ * FluentValidation

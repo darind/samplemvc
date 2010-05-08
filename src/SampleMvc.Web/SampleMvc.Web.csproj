@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\lib\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentValidation">
       <HintPath>..\..\lib\FluentValidation.dll</HintPath>
     </Reference>
@@ -46,6 +49,10 @@
     </Reference>
     <Reference Include="MvcContrib">
       <HintPath>..\..\lib\MvcContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,15 +70,29 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\BaseBidirectionalMapper.cs" />
+    <Compile Include="Mappers\IMapper.cs" />
+    <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Mvc\AutoMapAttribute.cs" />
+    <Compile Include="Mvc\SpringControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\UserViewModelValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\controllers.xml" />
+    <Content Include="Config\mappers.xml" />
+    <Content Include="Config\propertyConfigurer.xml" />
+    <Content Include="Config\repositories.xml" />
     <Content Include="Global.asax" />
     <Content Include="Views\Shared\EditorTemplates\UserViewModel.ascx" />
     <Content Include="Views\Users\Edit.aspx" />
@@ -98,14 +119,18 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
-    <Folder Include="Mappers\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SampleMvc.Business\SampleMvc.Business.csproj">
       <Project>{7D8F7565-AA3D-4978-B596-568E8DBF25C7}</Project>
       <Name>SampleMvc.Business</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Messages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

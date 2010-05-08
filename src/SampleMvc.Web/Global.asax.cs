@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using FluentValidation.Mvc;
-using FluentValidation.Attributes;
-
-namespace SampleMvc.Web
+﻿namespace SampleMvc.Web
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
+    using System.Web.Mvc;
+    using System.Web.Routing;
+    using FluentValidation.Attributes;
+    using FluentValidation.Mvc;
+    using SampleMvc.Web.Mvc;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -31,10 +25,12 @@ namespace SampleMvc.Web
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
 
+            ControllerBuilder.Current.SetControllerFactory(new SpringControllerFactory());
+
             DataAnnotationsModelValidatorProvider
                 .AddImplicitRequiredAttributeForValueTypes = false;
 
-            //DefaultModelBinder.ResourceClassKey = "Messages";
+            DefaultModelBinder.ResourceClassKey = "Messages";
 
             ModelValidatorProviders.Providers.Clear();
             ModelValidatorProviders.Providers.Add(
