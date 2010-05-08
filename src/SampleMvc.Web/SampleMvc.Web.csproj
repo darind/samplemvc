@@ -134,9 +134,7 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SampleMvc.Business\SampleMvc.Business.csproj">
       <Project>{7D8F7565-AA3D-4978-B596-568E8DBF25C7}</Project>

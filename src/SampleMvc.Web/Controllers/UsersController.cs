@@ -80,6 +80,5 @@
             Repository.Delete(id);
             return RedirectToAction("Index", "Users");
         }
-
     }
 }

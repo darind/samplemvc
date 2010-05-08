@@ -6,9 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <h2>New</h2>
-
     <% using (Html.BeginForm<UsersController>(c => c.Create(null))) {%>
         <%: Html.ValidationSummary(true) %>
 
@@ -17,10 +15,7 @@
             <input type="submit" value="Create" />
         </p>
     <% } %>
-
     <div>
         <%: Html.ActionLink<UsersController>(c => c.Index(), "Back to List") %>
     </div>
-
 </asp:Content>
-

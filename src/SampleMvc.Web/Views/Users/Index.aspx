@@ -7,9 +7,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <h2>Index</h2>
-
     <%: Html.Grid<UserViewModel>(Model)
         .Columns(column => {
             column.For("TableLinks").Named("");
@@ -18,9 +16,7 @@
             column.For(model => model.Age);
         })
     %>
-
     <p>
         <%: Html.ActionLink<UsersController>(c => c.New(), "Create New") %>
     </p>
-
 </asp:Content>
