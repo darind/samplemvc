@@ -3,10 +3,6 @@
 <fieldset>
     <legend>Fields</legend>
             
-    <div class="editor-field">
-        <%: Html.HiddenFor(model => model.Id) %>
-    </div>
-            
     <div class="editor-label">
         <%: Html.LabelFor(model => model.FirstName) %>
     </div>

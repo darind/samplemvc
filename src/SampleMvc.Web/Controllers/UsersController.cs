@@ -2,7 +2,6 @@
 {
     using System.Web.Mvc;
     using SampleMvc.Web.Models;
-    using System.Linq;
 
     [HandleError]
     public class UsersController : Controller
@@ -31,10 +30,14 @@
         }
 
         [HttpPost]
-        public ActionResult Create()
+        public ActionResult Create(UserViewModel user)
         {
             // create a new user
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View("New", user);
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult Show(int id)
@@ -53,21 +56,32 @@
         public ActionResult Edit(int id)
         {
             // return an HTML form for editing a specific user
-            return View();
+            var user = new UserViewModel
+            {
+                Id = id,
+                FirstName = "first 1",
+                LastName = "last 1",
+                Age = 56
+            };
+            return View(user);
         }
 
         [HttpPut]
-        public ActionResult Update()
+        public ActionResult Update(UserViewModel user)
         {
             // find and update a specific user
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", user);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpDelete]
-        public ActionResult Destroy()
+        public ActionResult Destroy(int id)
         {
             // delete a specific user
-            return View();
+            return RedirectToAction("Index");
         }
 
     }

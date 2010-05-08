@@ -4,9 +4,8 @@
 <td>
     <%: Html.ActionLink<UsersController>(c => c.Edit(Model.Id), "Edit") %> |
     <%: Html.ActionLink<UsersController>(c => c.Show(Model.Id), "Details") %> |
-    <% using (Html.BeginForm<UsersController>(c => c.Destroy())) { %>
+    <% using (Html.BeginForm<UsersController>(c => c.Destroy(Model.Id))) { %>
         <%: Html.HttpMethodOverride(HttpVerbs.Delete) %>
-        <%: Html.HiddenFor(model => model.Id) %>
         <input type="submit" value="Delete" />
     <% } %>
 </td>

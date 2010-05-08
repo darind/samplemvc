@@ -1,16 +1,22 @@
-﻿using SampleMvc.Web.Models;
-using FluentValidation;
-
-namespace SampleMvc.Web.Validators
+﻿namespace SampleMvc.Web.Validators
 {
+    using FluentValidation;
+    using FluentValidation.Mvc.MetadataExtensions;
+    using SampleMvc.Web.Models;
+
     public class UserViewModelValidator : AbstractValidator<UserViewModel>
     {
         public UserViewModelValidator()
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty()
-                .WithPropertyName("First name")
-                .WithMessage("First name is required");
+                .WithMessage("First name is required")
+                .DisplayName("First name *");
+
+            RuleFor(x => x.LastName)
+                .NotEmpty()
+                .WithMessage("Last name is required")
+                .DisplayName("Last name *");
         }
     }
 }

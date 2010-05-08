@@ -9,9 +9,10 @@
 
     <h2>Edit</h2>
 
-    <% using (Html.BeginForm<UsersController>(c => c.Update())) {%>
+    <% using (Html.BeginForm<UsersController>(c => c.Update(null))) {%>
         <%: Html.ValidationSummary(true) %>
         <%: Html.HttpMethodOverride(HttpVerbs.Put) %>
+        <%: Html.HiddenFor(model => model.Id) %>
         <%: Html.EditorForModel() %>
         <p>
             <input type="submit" value="Save" />

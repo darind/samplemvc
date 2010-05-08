@@ -9,7 +9,7 @@
 
     <h2>New</h2>
 
-    <% using (Html.BeginForm<UsersController>(c => c.Create())) {%>
+    <% using (Html.BeginForm<UsersController>(c => c.Create(null))) {%>
         <%: Html.ValidationSummary(true) %>
 
         <%: Html.EditorForModel() %>
