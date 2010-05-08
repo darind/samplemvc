@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentValidation.Mvc;
+using FluentValidation.Attributes;
 
 namespace SampleMvc.Web
 {
@@ -27,8 +29,19 @@ namespace SampleMvc.Web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
             RegisterRoutes(RouteTable.Routes);
+
+            DataAnnotationsModelValidatorProvider
+                .AddImplicitRequiredAttributeForValueTypes = false;
+
+            //DefaultModelBinder.ResourceClassKey = "Messages";
+
+            ModelValidatorProviders.Providers.Clear();
+            ModelValidatorProviders.Providers.Add(
+                    new FluentValidationModelValidatorProvider(new AttributedValidatorFactory()));
+
+            ModelMetadataProviders.Current = new FluentValidationModelMetadataProvider(
+                new AttributedValidatorFactory());
         }
     }
 }
