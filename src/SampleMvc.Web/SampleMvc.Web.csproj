@@ -79,7 +79,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappers\BaseBidirectionalMapper.cs" />
     <Compile Include="Mappers\IMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Models\UserViewModel.cs" />

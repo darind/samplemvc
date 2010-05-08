@@ -20,8 +20,11 @@
         {
             base.OnActionExecuted(filterContext);
             var model = filterContext.Controller.ViewData.Model;
-            var viewModel = Mapper.Map(model, SourceType, DestType);
-            filterContext.Controller.ViewData.Model = viewModel;
+            if (model != null && model.GetType() == SourceType)
+            {
+                var viewModel = Mapper.Map(model, SourceType, DestType);
+                filterContext.Controller.ViewData.Model = viewModel;
+            }
         }
     }
 }

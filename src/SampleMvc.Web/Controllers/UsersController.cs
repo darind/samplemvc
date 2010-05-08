@@ -11,11 +11,11 @@
     public class UsersController : Controller
     {
         private readonly IUsersRepository _repository;
-        private readonly BaseBidirectionalMapper<User, UserViewModel> _userMapper;
+        private readonly IMapper _userMapper;
 
         public UsersController(
             IUsersRepository repository,
-            BaseBidirectionalMapper<User, UserViewModel> userMapper)
+            IMapper userMapper)
         {
             _repository = repository;
             _userMapper = userMapper;
@@ -37,6 +37,7 @@
         }
 
         [HttpPost]
+        [AutoMap(typeof(User), typeof(UserViewModel))]
         public ActionResult Create(UserViewModel userView)
         {
             // create a new user
@@ -44,7 +45,7 @@
             {
                 return View("New", userView);
             }
-            var user = _userMapper.MapFrom(userView);
+            var user = (User)_userMapper.Map(userView, typeof(UserViewModel), typeof(User));
             _repository.Save(user);
             return RedirectToAction("Index", "Users");
         }
@@ -73,7 +74,7 @@
             {
                 return View("Edit", userView);
             }
-            var user = _userMapper.MapFrom(userView);
+            var user = (User)_userMapper.Map(userView, typeof(UserViewModel), typeof(User));
             _repository.Update(user);
             return RedirectToAction("Index", "Users");
         }

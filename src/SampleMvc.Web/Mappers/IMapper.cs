@@ -1,10 +1,9 @@
 ﻿namespace SampleMvc.Web.Mappers
 {
-    using System.Collections.Generic;
+    using System;
 
-    public interface IMapper<TSource, TDestination>
+    public interface IMapper
     {
-        TDestination MapFrom(TSource source);
-        IEnumerable<TDestination> MapFrom(IEnumerable<TSource> source);
+        object Map(object source, Type sourceType, Type destinationType);
     }
 }

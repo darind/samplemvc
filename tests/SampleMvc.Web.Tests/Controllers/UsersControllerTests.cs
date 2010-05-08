@@ -17,7 +17,7 @@
     {
         private UsersController _sut;
         private IUsersRepository _repositoryStub;
-        private BaseBidirectionalMapper<User, UserViewModel> _userMapperStub;
+        private IMapper _userMapperStub;
 
         public UsersControllerTests()
         {
@@ -58,7 +58,7 @@
         public void MyTestInitialize() 
         {
             _repositoryStub = MockRepository.GenerateStub<IUsersRepository>();
-            _userMapperStub = MockRepository.GenerateStub<BaseBidirectionalMapper<User, UserViewModel>>();
+            _userMapperStub = MockRepository.GenerateStub<IMapper>();
             _sut = new UsersController(_repositoryStub, _userMapperStub);
             InitializeController(_sut);
         }
@@ -121,7 +121,9 @@
             // arrange
             var userView = new UserViewModel();
             var user = new User();
-            _userMapperStub.Stub(x => x.MapFrom(userView)).Return(user);
+            _userMapperStub
+                .Stub(x => x.Map(userView, typeof(UserViewModel), typeof(User)))
+                .Return(user);
 
             // act
             var actual = _sut.Create(userView);
@@ -193,7 +195,9 @@
             // arrange
             var userView = new UserViewModel();
             var user = new User();
-            _userMapperStub.Stub(x => x.MapFrom(userView)).Return(user);
+            _userMapperStub
+                .Stub(x => x.Map(userView, typeof(UserViewModel), typeof(User)))
+                .Return(user);
 
             // act
             var actual = _sut.Update(userView);
