@@ -40,6 +40,10 @@
       <HintPath>..\..\lib\FluentValidation.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Mvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="MvcContrib">
       <HintPath>..\..\lib\MvcContrib.dll</HintPath>
     </Reference>
@@ -74,6 +78,7 @@
     <Content Include="Views\Users\Index.aspx" />
     <Content Include="Views\Users\New.aspx" />
     <Content Include="Views\Users\Show.aspx" />
+    <Content Include="Views\Users\TableLinks.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

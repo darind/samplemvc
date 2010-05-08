@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SampleMvc.Web.Models.UserViewModel>" %>
+<%@ Import Namespace="SampleMvc.Web.Controllers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	New
@@ -8,7 +9,7 @@
 
     <h2>New</h2>
 
-    <% using (Html.BeginForm("create", "users")) {%>
+    <% using (Html.BeginForm<UsersController>(c => c.Create())) {%>
         <%: Html.ValidationSummary(true) %>
 
         <%: Html.EditorForModel() %>
@@ -18,7 +19,7 @@
     <% } %>
 
     <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <%: Html.ActionLink<UsersController>(c => c.Index(), "Back to List") %>
     </div>
 
 </asp:Content>

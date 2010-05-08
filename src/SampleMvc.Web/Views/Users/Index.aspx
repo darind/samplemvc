@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<SampleMvc.Web.Models.UserViewModel>>" %>
 <%@ Import Namespace="SampleMvc.Web.Models" %>
+<%@ Import Namespace="SampleMvc.Web.Controllers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Index
@@ -9,54 +10,17 @@
 
     <h2>Index</h2>
 
-    <%: Html.Grid<UserViewModel>(Model) %>
-
-    <table>
-        <tr>
-            <th></th>
-            <th>
-                Id
-            </th>
-            <th>
-                FirstName
-            </th>
-            <th>
-                LastName
-            </th>
-            <th>
-                Age
-            </th>
-        </tr>
-
-    <% foreach (var item in Model) { %>
-    
-        <tr>
-            <td>
-                <%: Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
-                <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })%>
-            </td>
-            <td>
-                <%: item.Id %>
-            </td>
-            <td>
-                <%: item.FirstName %>
-            </td>
-            <td>
-                <%: item.LastName %>
-            </td>
-            <td>
-                <%: item.Age %>
-            </td>
-        </tr>
-    
-    <% } %>
-
-    </table>
+    <%: Html.Grid<UserViewModel>(Model)
+        .Columns(column => {
+            column.For("TableLinks").Named("");
+            column.For(model => model.FirstName);
+            column.For(model => model.LastName);
+            column.For(model => model.Age);
+        })
+    %>
 
     <p>
-        <%: Html.ActionLink("Create New", "Create") %>
+        <%: Html.ActionLink<UsersController>(c => c.New(), "Create New") %>
     </p>
 
 </asp:Content>
-

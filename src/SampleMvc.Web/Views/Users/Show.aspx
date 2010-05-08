@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SampleMvc.Web.Models.UserViewModel>" %>
+<%@ Import Namespace="SampleMvc.Web.Controllers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Show
@@ -25,8 +26,8 @@
         
     </fieldset>
     <p>
-        <%: Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) %> |
-        <%: Html.ActionLink("Back to List", "Index") %>
+        <%: Html.ActionLink<UsersController>(c => c.Edit(Model.Id), "Edit") %> |
+        <%: Html.ActionLink<UsersController>(c => c.Index(), "Back to List") %>
     </p>
 
 </asp:Content>

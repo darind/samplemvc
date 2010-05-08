@@ -10,7 +10,18 @@
         public ActionResult Index()
         {
             // return all users
-            return View(Enumerable.Empty<UserViewModel>());
+            var users = new[]
+            {
+                new UserViewModel
+                {
+                    Id = 1,
+                    FirstName = "first 1",
+                    LastName = "last 1",
+                    Age = 39
+                }
+
+            };
+            return View(users);
         }
 
         public ActionResult New()
@@ -29,10 +40,17 @@
         public ActionResult Show(int id)
         {
             // find and return a specific user
-            return View();
+            var user = new UserViewModel
+            {
+                Id = id,
+                FirstName = "first 1",
+                LastName = "last 1",
+                Age = 56
+            };
+            return View(user);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
             // return an HTML form for editing a specific user
             return View();
