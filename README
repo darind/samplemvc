@@ -5,3 +5,4 @@ This is a sample ASP.NET MVC application based on the following frameworks:
  * Spring.NET
  * AutoMapper
  * FluentValidation
+ * Rhino.Mocks
