@@ -52,7 +52,7 @@
         //
         // Use TestInitialize to run code before running each test 
         [TestInitialize()]
-        public void MyTestInitialize() 
+        public void MyTestInitialize()
         {
             if (File.Exists(DataFile))
             {
@@ -111,9 +111,9 @@
             var actual = _sut.Get(id);
 
             // assert
-            Assert.AreEqual("first name 1", actual.FirstName);
-            Assert.AreEqual("last name 1", actual.LastName);
-            Assert.AreEqual(30, actual.Age);
+            Assert.AreEqual("first name 2", actual.FirstName);
+            Assert.AreEqual("last name 2", actual.LastName);
+            Assert.AreEqual(50, actual.Age);
         }
 
         [TestMethod]
@@ -141,8 +141,8 @@
         public void SqlUsersRepository_Save()
         {
             // arrange
-            var user = new User 
-            { 
+            var user = new User
+            {
                 FirstName = "first name 3",
                 LastName = "last name 3",
                 Age = 35

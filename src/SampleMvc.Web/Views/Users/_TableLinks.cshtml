@@ -1,0 +1,9 @@
+﻿@model SampleMvc.Web.Models.UserViewModel
+
+@(Html.ActionLink<UsersController>(c => c.Edit(Model.Id), "Edit")) |
+@(Html.ActionLink<UsersController>(c => c.Show(Model.Id), "Details")) |
+@using (Html.BeginForm<UsersController>(c => c.Destroy(Model.Id))) 
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <input type="submit" value="Delete" />
+}

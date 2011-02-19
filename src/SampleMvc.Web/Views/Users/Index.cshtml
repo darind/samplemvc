@@ -1,0 +1,20 @@
+﻿@model IEnumerable<SampleMvc.Web.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@(Html
+    .Grid<UserViewModel>(Model)
+    .Columns(column => {
+        column.Custom(model => Html.Partial("_TableLinks", model));
+        column.For(model => model.FirstName);
+        column.For(model => model.LastName);
+        column.For(model => model.Age);
+    })
+)
+
+<p>
+    @(Html.ActionLink<UsersController>(c => c.New(), "Create New"))
+</p>

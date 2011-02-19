@@ -1,41 +1,62 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{E1CF06C3-3444-447B-BD41-189C4F24E4A9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2B89544C-4CDD-4E37-A9EA-F3CC072C8527}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FD470CCA-D411-4C9B-B1E9-DE3B5A545EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Business", "src\SampleMvc.Business\SampleMvc.Business.csproj", "{62B555EC-4B06-4DE6-AD13-62B6CEFF0855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Web", "src\SampleMvc.Web\SampleMvc.Web.csproj", "{17D3C0F9-66AB-4239-8819-895EAC4C7517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{B4858429-D59F-4D8D-9536-C49840A922E0}"
 	ProjectSection(SolutionItems) = preProject
 		lib\Antlr3.Runtime.dll = lib\Antlr3.Runtime.dll
 		lib\AutoMapper.dll = lib\AutoMapper.dll
 		lib\Castle.Core.dll = lib\Castle.Core.dll
-		lib\Castle.DynamicProxy2.dll = lib\Castle.DynamicProxy2.dll
+		lib\Castle.Core.xml = lib\Castle.Core.xml
 		lib\Common.Logging.dll = lib\Common.Logging.dll
 		lib\FluentNHibernate.dll = lib\FluentNHibernate.dll
+		lib\FluentNHibernate.pdb = lib\FluentNHibernate.pdb
+		lib\FluentNHibernate.XML = lib\FluentNHibernate.XML
 		lib\FluentValidation.dll = lib\FluentValidation.dll
 		lib\FluentValidation.Mvc.dll = lib\FluentValidation.Mvc.dll
+		lib\FluentValidation.Mvc.pdb = lib\FluentValidation.Mvc.pdb
+		lib\FluentValidation.pdb = lib\FluentValidation.pdb
+		lib\FluentValidation.XML = lib\FluentValidation.XML
 		lib\Iesi.Collections.dll = lib\Iesi.Collections.dll
-		lib\log4net.dll = lib\log4net.dll
+		lib\Iesi.Collections.pdb = lib\Iesi.Collections.pdb
+		lib\Iesi.Collections.xml = lib\Iesi.Collections.xml
 		lib\Microsoft.Web.Mvc.dll = lib\Microsoft.Web.Mvc.dll
 		lib\MvcContrib.dll = lib\MvcContrib.dll
 		lib\MvcContrib.TestHelper.dll = lib\MvcContrib.TestHelper.dll
+		lib\MvcContrib.TestHelper.xml = lib\MvcContrib.TestHelper.xml
+		lib\MvcContrib.XML = lib\MvcContrib.XML
 		lib\NHibernate.ByteCode.Castle.dll = lib\NHibernate.ByteCode.Castle.dll
+		lib\NHibernate.ByteCode.Castle.pdb = lib\NHibernate.ByteCode.Castle.pdb
+		lib\NHibernate.ByteCode.Castle.xml = lib\NHibernate.ByteCode.Castle.xml
 		lib\NHibernate.dll = lib\NHibernate.dll
+		lib\NHibernate.pdb = lib\NHibernate.pdb
+		lib\NHibernate.xml = lib\NHibernate.xml
 		lib\Rhino.Mocks.dll = lib\Rhino.Mocks.dll
 		lib\Spring.Aop.dll = lib\Spring.Aop.dll
+		lib\Spring.Aop.pdb = lib\Spring.Aop.pdb
+		lib\Spring.Aop.xml = lib\Spring.Aop.xml
 		lib\Spring.Core.dll = lib\Spring.Core.dll
+		lib\Spring.Core.pdb = lib\Spring.Core.pdb
+		lib\Spring.Core.xml = lib\Spring.Core.xml
 		lib\Spring.Data.dll = lib\Spring.Data.dll
-		lib\Spring.Data.NHibernate21.dll = lib\Spring.Data.NHibernate21.dll
+		lib\Spring.Data.NHibernate30.dll = lib\Spring.Data.NHibernate30.dll
+		lib\Spring.Data.NHibernate30.pdb = lib\Spring.Data.NHibernate30.pdb
+		lib\Spring.Data.NHibernate30.xml = lib\Spring.Data.NHibernate30.xml
+		lib\Spring.Data.pdb = lib\Spring.Data.pdb
+		lib\Spring.Data.xml = lib\Spring.Data.xml
+		lib\System.Data.SQLite.DLL = lib\System.Data.SQLite.DLL
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83A141D4-6141-42A7-8092-43B68D88C483}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Business.Tests", "tests\SampleMvc.Business.Tests\SampleMvc.Business.Tests.csproj", "{518177B9-546E-4D90-999C-9EBA8C5FDB2D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5F911603-EE99-48FD-B705-071BC0DCC933}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Web", "src\SampleMvc.Web\SampleMvc.Web.csproj", "{207D5A14-EEB5-4573-A47C-8A131DA62993}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Business", "src\SampleMvc.Business\SampleMvc.Business.csproj", "{7D8F7565-AA3D-4978-B596-568E8DBF25C7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Web.Tests", "tests\SampleMvc.Web.Tests\SampleMvc.Web.Tests.csproj", "{F5ED7806-9BAC-40FE-B62D-A5F8E23AB538}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06CA7CCD-9472-4062-9F9F-08FD73A912FB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4EFBBF89-6CBB-48CD-988D-AF3E34276DEC}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 		README = README
@@ -43,7 +64,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Business.Tests", "tests\SampleMvc.Business.Tests\SampleMvc.Business.Tests.csproj", "{4EB4ABDE-7D0F-40CF-8CFF-FB2669FB01F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMvc.Web.Tests", "tests\SampleMvc.Web.Tests\SampleMvc.Web.Tests.csproj", "{ED61406E-C845-4577-B6F5-0A621B79B65B}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -54,28 +75,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{207D5A14-EEB5-4573-A47C-8A131DA62993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{207D5A14-EEB5-4573-A47C-8A131DA62993}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{207D5A14-EEB5-4573-A47C-8A131DA62993}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{207D5A14-EEB5-4573-A47C-8A131DA62993}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D8F7565-AA3D-4978-B596-568E8DBF25C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D8F7565-AA3D-4978-B596-568E8DBF25C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D8F7565-AA3D-4978-B596-568E8DBF25C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D8F7565-AA3D-4978-B596-568E8DBF25C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5ED7806-9BAC-40FE-B62D-A5F8E23AB538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5ED7806-9BAC-40FE-B62D-A5F8E23AB538}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5ED7806-9BAC-40FE-B62D-A5F8E23AB538}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4EB4ABDE-7D0F-40CF-8CFF-FB2669FB01F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EB4ABDE-7D0F-40CF-8CFF-FB2669FB01F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EB4ABDE-7D0F-40CF-8CFF-FB2669FB01F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B555EC-4B06-4DE6-AD13-62B6CEFF0855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B555EC-4B06-4DE6-AD13-62B6CEFF0855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B555EC-4B06-4DE6-AD13-62B6CEFF0855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B555EC-4B06-4DE6-AD13-62B6CEFF0855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D3C0F9-66AB-4239-8819-895EAC4C7517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D3C0F9-66AB-4239-8819-895EAC4C7517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D3C0F9-66AB-4239-8819-895EAC4C7517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D3C0F9-66AB-4239-8819-895EAC4C7517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{518177B9-546E-4D90-999C-9EBA8C5FDB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{518177B9-546E-4D90-999C-9EBA8C5FDB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{518177B9-546E-4D90-999C-9EBA8C5FDB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{518177B9-546E-4D90-999C-9EBA8C5FDB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED61406E-C845-4577-B6F5-0A621B79B65B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED61406E-C845-4577-B6F5-0A621B79B65B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED61406E-C845-4577-B6F5-0A621B79B65B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED61406E-C845-4577-B6F5-0A621B79B65B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{207D5A14-EEB5-4573-A47C-8A131DA62993} = {83A141D4-6141-42A7-8092-43B68D88C483}
-		{7D8F7565-AA3D-4978-B596-568E8DBF25C7} = {83A141D4-6141-42A7-8092-43B68D88C483}
-		{F5ED7806-9BAC-40FE-B62D-A5F8E23AB538} = {5F911603-EE99-48FD-B705-071BC0DCC933}
-		{4EB4ABDE-7D0F-40CF-8CFF-FB2669FB01F5} = {5F911603-EE99-48FD-B705-071BC0DCC933}
+		{62B555EC-4B06-4DE6-AD13-62B6CEFF0855} = {2B89544C-4CDD-4E37-A9EA-F3CC072C8527}
+		{17D3C0F9-66AB-4239-8819-895EAC4C7517} = {2B89544C-4CDD-4E37-A9EA-F3CC072C8527}
+		{518177B9-546E-4D90-999C-9EBA8C5FDB2D} = {FD470CCA-D411-4C9B-B1E9-DE3B5A545EA4}
+		{ED61406E-C845-4577-B6F5-0A621B79B65B} = {FD470CCA-D411-4C9B-B1E9-DE3B5A545EA4}
 	EndGlobalSection
 EndGlobal

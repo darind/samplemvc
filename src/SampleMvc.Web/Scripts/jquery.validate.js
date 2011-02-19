@@ -1,32 +1,21 @@
 /*
- * jQuery validation plug-in 1.6
- *
- * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
- * http://docs.jquery.com/Plugins/Validation
- *
- * Copyright (c) 2006 - 2008 Jörn Zaefferer
- *
- * $Id: jquery.validate.js 6403 2009-06-17 14:27:16Z joern.zaefferer $
- *
- * Permission is hereby granted, free of charge, to any person obtaining
- * a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including
- * without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to
- * the following conditions:
- * 
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
- * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+* Note: While Microsoft is not the author of this file, Microsoft is
+* offering you a license subject to the terms of the Microsoft Software
+* License Terms for Microsoft ASP.NET Model View Controller 3.
+* Microsoft reserves all other rights. The notices below are provided
+* for informational purposes only and are not the license terms under
+* which Microsoft distributed this file.
+*
+* jQuery validation plug-in 1.7
+*
+* http://bassistance.de/jquery-plugins/jquery-plugin-validation/
+* http://docs.jquery.com/Plugins/Validation
+*
+* Copyright (c) 2006 - 2008 Jörn Zaefferer
+*
+* $Id: jquery.validate.js 6403 2009-06-17 14:27:16Z joern.zaefferer $
+*
+*/
 
 (function($) {
 
@@ -189,7 +178,7 @@ $.extend($.expr[":"], {
 
 // constructor for validator
 $.validator = function( options, form ) {
-	this.settings = $.extend( {}, $.validator.defaults, options );
+	this.settings = $.extend( true, {}, $.validator.defaults, options );
 	this.currentForm = form;
 	this.init();
 };
@@ -253,7 +242,7 @@ $.extend($.validator, {
 				this.element(element);
 			// or option elements, check parent select in that case
 			else if (element.parentNode.name in this.submitted)
-				this.element(element.parentNode)
+				this.element(element.parentNode);
 		},
 		highlight: function( element, errorClass, validClass ) {
 			$(element).addClass(errorClass).removeClass(validClass);
@@ -315,12 +304,13 @@ $.extend($.validator, {
 			});
 			
 			function delegate(event) {
-				var validator = $.data(this[0].form, "validator");
-				validator.settings["on" + event.type] && validator.settings["on" + event.type].call(validator, this[0] );
+				var validator = $.data(this[0].form, "validator"),
+					eventType = "on" + event.type.replace(/^validate/, "");
+				validator.settings[eventType] && validator.settings[eventType].call(validator, this[0] );
 			}
 			$(this.currentForm)
-				.delegate("focusin focusout keyup", ":text, :password, :file, select, textarea", delegate)
-				.delegate("click", ":radio, :checkbox, select, option", delegate);
+				.validateDelegate(":text, :password, :file, select, textarea", "focusin focusout keyup", delegate)
+				.validateDelegate(":radio, :checkbox, select, option", "click", delegate);
 
 			if (this.settings.invalidHandler)
 				$(this.currentForm).bind("invalid-form.validate", this.settings.invalidHandler);
@@ -423,7 +413,11 @@ $.extend($.validator, {
 		focusInvalid: function() {
 			if( this.settings.focusInvalid ) {
 				try {
-					$(this.findLastActive() || this.errorList.length && this.errorList[0].element || []).filter(":visible").focus();
+					$(this.findLastActive() || this.errorList.length && this.errorList[0].element || [])
+					.filter(":visible")
+					.focus()
+					// manually trigger focusin event; without it, focusin handler isn't called, findLastActive won't have anything to find
+					.trigger("focusin");
 				} catch(e) {
 					// ignore IE throwing errors when focusing hidden elements
 				}
@@ -665,7 +659,7 @@ $.extend($.validator, {
 		errorsFor: function(element) {
 			var name = this.idOrName(element);
     		return this.errors().filter(function() {
-				return $(this).attr('for') == name
+				return $(this).attr('for') == name;
 			});
 		},
 		
@@ -876,7 +870,7 @@ $.extend($.validator, {
 		
 		// To support custom messages in metadata ignore rule methods titled "messages"
 		if (rules.messages) {
-			delete rules.messages
+			delete rules.messages;
 		}
 		
 		return rules;
@@ -1115,41 +1109,42 @@ $.format = $.validator.format;
 
 // provides delegate(type: String, delegate: Selector, handler: Callback) plugin for easier event delegation
 // handler is only called when $(event.target).is(delegate), in the scope of the jquery-object for event.target 
-
-// provides triggerEvent(type: String, target: Element) to trigger delegated events
 ;(function($) {
-	$.each({
-		focus: 'focusin',
-		blur: 'focusout'	
-	}, function( original, fix ){
-		$.event.special[fix] = {
-			setup:function() {
-				if ( $.browser.msie ) return false;
-				this.addEventListener( original, $.event.special[fix].handler, true );
-			},
-			teardown:function() {
-				if ( $.browser.msie ) return false;
-				this.removeEventListener( original,
-				$.event.special[fix].handler, true );
-			},
-			handler: function(e) {
-				arguments[0] = $.event.fix(e);
-				arguments[0].type = fix;
-				return $.event.handle.apply(this, arguments);
+	// only implement if not provided by jQuery core (since 1.4)
+	// TODO verify if jQuery 1.4's implementation is compatible with older jQuery special-event APIs
+	if (!jQuery.event.special.focusin && !jQuery.event.special.focusout && document.addEventListener) {
+		$.each({
+			focus: 'focusin',
+			blur: 'focusout'	
+		}, function( original, fix ){
+			$.event.special[fix] = {
+				setup:function() {
+					this.addEventListener( original, handler, true );
+				},
+				teardown:function() {
+					this.removeEventListener( original, handler, true );
+				},
+				handler: function(e) {
+					arguments[0] = $.event.fix(e);
+					arguments[0].type = fix;
+					return $.event.handle.apply(this, arguments);
+				}
+			};
+			function handler(e) {
+				e = $.event.fix(e);
+				e.type = fix;
+				return $.event.handle.call(this, e);
 			}
-		};
-	});
+		});
+	};
 	$.extend($.fn, {
-		delegate: function(type, delegate, handler) {
+		validateDelegate: function(delegate, type, handler) {
 			return this.bind(type, function(event) {
 				var target = $(event.target);
 				if (target.is(delegate)) {
 					return handler.apply(target, arguments);
 				}
 			});
-		},
-		triggerEvent: function(type, target) {
-			return this.triggerHandler(type, [$.event.fix({ type: type, target: target })]);
 		}
-	})
+	});
 })(jQuery);

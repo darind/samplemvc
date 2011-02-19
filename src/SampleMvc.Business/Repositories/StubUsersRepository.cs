@@ -41,7 +41,7 @@
 
         public void Delete(int id)
         {
-            
+
         }
 
         public int Save(User user)
@@ -51,7 +51,7 @@
 
         public void Update(User user)
         {
-            
+
         }
     }
 }

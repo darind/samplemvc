@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4EB4ABDE-7D0F-40CF-8CFF-FB2669FB01F5}</ProjectGuid>
+    <ProjectGuid>{518177B9-546E-4D90-999C-9EBA8C5FDB2D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SampleMvc.Business.Tests</RootNamespace>
@@ -34,21 +34,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NHibernate">
       <HintPath>..\..\lib\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Spring.Core">
       <HintPath>..\..\lib\Spring.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Spring.Data">
       <HintPath>..\..\lib\Spring.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Spring.Data.NHibernate21.dll</HintPath>
+    <Reference Include="Spring.Data.NHibernate30">
+      <HintPath>..\..\lib\Spring.Data.NHibernate30.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -69,15 +65,15 @@
     <Compile Include="Repositories\Sql\SqlUsersRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SampleMvc.Business\SampleMvc.Business.csproj">
-      <Project>{7D8F7565-AA3D-4978-B596-568E8DBF25C7}</Project>
-      <Name>SampleMvc.Business</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Repositories\Sql\CreateDbSchema.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SampleMvc.Business\SampleMvc.Business.csproj">
+      <Project>{62B555EC-4B06-4DE6-AD13-62B6CEFF0855}</Project>
+      <Name>SampleMvc.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

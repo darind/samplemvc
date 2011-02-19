@@ -10,13 +10,11 @@
         {
             RuleFor(x => x.FirstName)
                 .NotEmpty()
-                .WithMessage("First name is required")
-                .DisplayName("First name *");
+                .WithMessage("First name is required");
 
             RuleFor(x => x.LastName)
                 .NotEmpty()
-                .WithMessage("Last name is required")
-                .DisplayName("Last name *");
+                .WithMessage("Last name is required");
         }
     }
 }

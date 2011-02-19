@@ -1,0 +1,18 @@
+﻿@model SampleMvc.Web.Models.UserViewModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New</h2>
+@using (Html.BeginForm<UsersController>(c => c.Create(null))) 
+{
+    @Html.ValidationSummary(true)
+    @Html.EditorForModel()
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+}
+<div>
+    @(Html.ActionLink<UsersController>(c => c.Index(), "Back to List"))
+</div>
