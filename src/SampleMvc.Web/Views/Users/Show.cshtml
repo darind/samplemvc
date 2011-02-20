@@ -6,22 +6,7 @@
 
 <h2>Show</h2>
 
-<fieldset>
-    <legend>Fields</legend>
-        
-    <div class="display-label">Id</div>
-    <div class="display-field">@Html.DisplayFor(x => x.Id)</div>
-        
-    <div class="display-label">FirstName</div>
-    <div class="display-field">@Html.DisplayFor(x => x.FirstName)</div>
-        
-    <div class="display-label">LastName</div>
-    <div class="display-field">@Html.DisplayFor(x => x.LastName)</div>
-        
-    <div class="display-label">Age</div>
-    <div class="display-field">@Html.DisplayFor(x => x.Age)</div>
-        
-</fieldset>
+@Html.DisplayForModel()
 <p>
     @(Html.ActionLink<UsersController>(c => c.Edit(Model.Id), "Edit")) |
     @(Html.ActionLink<UsersController>(c => c.Index(), "Back to List"))

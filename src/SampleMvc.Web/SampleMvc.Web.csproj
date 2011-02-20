@@ -90,6 +90,7 @@
     <Content Include="Config\repositories.xml" />
     <Content Include="Config\sessionFactory.xml" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Shared\DisplayTemplates\UserViewModel.cshtml" />
     <None Include="Views\Users\Edit.cshtml" />
     <None Include="Views\Users\Index.cshtml" />
     <None Include="Views\Users\New.cshtml" />
